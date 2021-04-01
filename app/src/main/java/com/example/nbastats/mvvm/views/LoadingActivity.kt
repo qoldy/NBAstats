@@ -1,5 +1,6 @@
 package com.example.nbastats.mvvm.views
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -27,18 +28,26 @@ class LoadingActivity:AppCompatActivity() {
         teamsVM = provider.get(TeamsVM::class.java)
         playersVM = provider.get(PlayersVM::class.java)
         observeData()
-        teamsVM.init()
-        playersVM.init()
+        teamsVM.init(this)
+        playersVM.init(this)
     }
 
-    fun observeData(){
+    private fun observeData(){
         teamsVM.liveData.observe(this, Observer {
             Log.v("gotTeams", it.toString())
             flagTeams=true
+            if(flagPlayers){
+                val intent= Intent(this, StandingsActivity::class.java)
+                startActivityForResult(intent, 0)
+            }
         })
         playersVM.liveData.observe(this, Observer {
             Log.v("gotPlayers", it.toString())
             flagPlayers=true
+            if(flagTeams){
+                val intent= Intent(this, StandingsActivity::class.java)
+                startActivityForResult(intent, 0)
+            }
         })
     }
 }

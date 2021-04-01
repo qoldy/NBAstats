@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">NBAstats</string>
+    <string name="navigation">Navigation</string>
+    <string name="east">East</string>
+    <string name="west">West</string>
+    <string name="team">Team</string>
+    <string name="confStandings">Conference Standings</string>
 </resources>

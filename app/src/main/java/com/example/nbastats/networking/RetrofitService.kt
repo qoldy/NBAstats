@@ -1,6 +1,10 @@
 package com.example.nbastats.networking
 
 import com.google.gson.GsonBuilder
+import com.google.gson.TypeAdapter
+import com.google.gson.stream.JsonReader
+import com.google.gson.stream.JsonToken
+import com.google.gson.stream.JsonWriter
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -16,7 +20,9 @@ class RetrofitService {
         }
         private val client: OkHttpClient = OkHttpClient.Builder().apply {
             this.addInterceptor(interceptor)}.build()
-        val gson = GsonBuilder().setDateFormat("yyyy-MM-dd").create()
+        val gson = GsonBuilder()
+                .setDateFormat("yyyy-MM-dd")
+                .create()
         private val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(client)
@@ -28,6 +34,5 @@ class RetrofitService {
         fun getInstance():ApiInterface{
             return retrofit
         }
-
     }
 }

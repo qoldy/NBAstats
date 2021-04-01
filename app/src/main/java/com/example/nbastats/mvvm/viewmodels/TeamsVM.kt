@@ -1,5 +1,6 @@
 package com.example.nbastats.mvvm.viewmodels
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.nbastats.data.Team
@@ -10,8 +11,8 @@ class TeamsVM:ViewModel(), VMI<Team> {
     var liveData = MutableLiveData<ArrayList<Team>>()
     private var model = TeamsModel()
 
-    fun init(){
-        model.attach(this)
+    fun init(context:Context){
+        model.attach(this, context)
         model.getTeams()
     }
 

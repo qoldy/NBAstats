@@ -1,5 +1,6 @@
 package com.example.nbastats.mvvm.viewmodels
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.nbastats.data.Player
@@ -10,8 +11,8 @@ class PlayersVM:ViewModel(), VMI<Player> {
     var liveData = MutableLiveData<ArrayList<Player>>()
     private var model  = PlayersModel()
 
-    fun init(){
-        model.attach(this)
+    fun init(context:Context){
+        model.attach(this, context)
         model.getPlayers()
     }
     override fun onResponse(response:ArrayList<Player>) {
