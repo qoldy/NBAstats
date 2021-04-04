@@ -2,6 +2,7 @@ package com.example.nbastats.utils
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.nbastats.mvvm.viewmodels.CoachesVM
 import com.example.nbastats.mvvm.viewmodels.PlayersVM
 import com.example.nbastats.mvvm.viewmodels.StandingsVM
 import com.example.nbastats.mvvm.viewmodels.TeamsVM
@@ -15,6 +16,8 @@ class VMFactory:ViewModelProvider.Factory {
             return PlayersVM() as T
         else if(modelClass.isAssignableFrom(StandingsVM::class.java))
             return StandingsVM() as T
+        else if(modelClass.isAssignableFrom(CoachesVM::class.java))
+            return CoachesVM() as T
         throw IllegalArgumentException ("UnknownViewModel")
     }
 }

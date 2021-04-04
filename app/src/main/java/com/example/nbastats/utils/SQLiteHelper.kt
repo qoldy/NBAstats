@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.provider.BaseColumns
+import com.example.nbastats.data.Coach
 import com.example.nbastats.data.Player
 import com.example.nbastats.data.Standings
 import com.example.nbastats.data.Team
@@ -73,14 +74,35 @@ class SQLiteHelper(context:Context): SQLiteOpenHelper(context, DATABASE_NAME, nu
 
     private val CLEAR_TABLE_PLAYERS="DELETE FROM ${PlayerEntry.TABLE_NAME}"
 
+    object CoachEntry:BaseColumns{
+        const val TABLE_NAME="coaches"
+        const val COLUMN_ID="id"
+        const val COLUMN_TEAM_ID="team_id"
+        const val COLUMN_FIRST_NAME="first_name"
+        const val COLUMN_LAST_NAME="last_name"
+    }
+
+    private val CREATE_TABLE_COACHES=
+            "CREATE TABLE ${CoachEntry.TABLE_NAME} (" +
+                    "${CoachEntry.COLUMN_ID} TEXT," +
+                    "${CoachEntry.COLUMN_TEAM_ID} TEXT," +
+                    "${CoachEntry.COLUMN_FIRST_NAME} TEXT," +
+                    "${CoachEntry.COLUMN_LAST_NAME} TEXT)"
+
+    private val DROP_TABLE_COACHES="DROP TABLE IF EXISTS ${CoachEntry.TABLE_NAME}"
+
+    private val CLEAR_TABLE_COACHES="DELETE FROM ${CoachEntry.TABLE_NAME}"
+
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(CREATE_TABLE_TEAMS)
         db.execSQL(CREATE_TABLE_PLAYERS)
+        db.execSQL(CREATE_TABLE_COACHES)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL(DROP_TABLE_TEAMS)
         db.execSQL(DROP_TABLE_PLAYERS)
+        db.execSQL(DROP_TABLE_COACHES)
         onCreate(db)
     }
 
@@ -125,6 +147,22 @@ class SQLiteHelper(context:Context): SQLiteOpenHelper(context, DATABASE_NAME, nu
         }
     }
 
+    fun fillCoaches(coaches:ArrayList<Coach>){
+        val db=this.writableDatabase
+        db.execSQL(CLEAR_TABLE_COACHES)
+        for(coach in coaches){
+            if(coach.isAssistant)
+                continue
+            val values = ContentValues().apply {
+                put(CoachEntry.COLUMN_ID, coach.id)
+                put(CoachEntry.COLUMN_TEAM_ID, coach.teamId)
+                put(CoachEntry.COLUMN_FIRST_NAME, coach.firstName)
+                put(CoachEntry.COLUMN_LAST_NAME, coach.lastName)
+            }
+            db?.insert(CoachEntry.TABLE_NAME, null, values)
+        }
+    }
+
     fun getTeamsByConference(conference: String):ArrayList<Team>{
         val db=this.readableDatabase
         val list=ArrayList<Team>()
@@ -144,5 +182,64 @@ class SQLiteHelper(context:Context): SQLiteOpenHelper(context, DATABASE_NAME, nu
             }while (result.moveToNext())
         }
         return list
+    }
+
+    fun getRoster(teamId:String):ArrayList<Player>{
+        val db=this.readableDatabase
+        val list=ArrayList<Player>()
+        val query = "SELECT * FROM ${PlayerEntry.TABLE_NAME} WHERE ${PlayerEntry.COLUMN_TEAM_ID}='${teamId}'"
+        val result = db.rawQuery(query, null)
+        if(result.moveToFirst()){
+            do{
+                val player=Player(
+                        result.getString(result.getColumnIndex(PlayerEntry.COLUMN_ID)),
+                        result.getString(result.getColumnIndex(PlayerEntry.COLUMN_TEAM_ID)),
+                        result.getString(result.getColumnIndex(PlayerEntry.COLUMN_FIRST_NAME)),
+                        result.getString(result.getColumnIndex(PlayerEntry.COLUMN_LAST_NAME)),
+                        result.getString(result.getColumnIndex(PlayerEntry.COLUMN_JERSEY)),
+                        true,
+                        result.getString(result.getColumnIndex(PlayerEntry.COLUMN_POSITION)),
+                        result.getString(result.getColumnIndex(PlayerEntry.COLUMN_HEIGHT)),
+                        result.getString(result.getColumnIndex(PlayerEntry.COLUMN_WEIGHT)),
+                        result.getString(result.getColumnIndex(PlayerEntry.COLUMN_DATE_OF_BIRTH)),
+                        result.getString(result.getColumnIndex(PlayerEntry.COLUMN_NBA_DEBUT)),
+                        result.getString(result.getColumnIndex(PlayerEntry.COLUMN_YEARS_PRO)),
+                        result.getString(result.getColumnIndex(PlayerEntry.COLUMN_COLLEGE)),
+                        result.getString(result.getColumnIndex(PlayerEntry.COLUMN_COUNTRY)),
+                )
+                list.add(player)
+            } while(result.moveToNext())
+        }
+        return list
+    }
+
+    fun getTeam(teamId: String):Team?{
+        val db=this.readableDatabase
+        val query = "SELECT * FROM ${TeamEntry.TABLE_NAME} WHERE ${TeamEntry.COLUMN_ID} = '${teamId}'"
+        val result = db.rawQuery(query, null)
+        if(result.moveToFirst())
+            return Team(
+                    result.getString(result.getColumnIndex(TeamEntry.COLUMN_ID)),
+                    result.getString(result.getColumnIndex(TeamEntry.COLUMN_CITY)),
+                    result.getString(result.getColumnIndex(TeamEntry.COLUMN_NAME)),
+                    result.getString(result.getColumnIndex(TeamEntry.COLUMN_TRICODE)),
+                    result.getString(result.getColumnIndex(TeamEntry.COLUMN_CONFERENCE)),
+                    result.getString(result.getColumnIndex(TeamEntry.COLUMN_DIVISION))
+            )
+        return null
+    }
+
+    fun getCoach(teamId:String):Coach?{
+        val db=this.readableDatabase
+        val query = "SELECT * FROM ${CoachEntry.TABLE_NAME} WHERE ${CoachEntry.COLUMN_TEAM_ID} = '${teamId}'"
+        val result = db.rawQuery(query, null)
+        if(result.moveToFirst())
+            return Coach(
+                    result.getString(result.getColumnIndex(CoachEntry.COLUMN_ID)),
+                    result.getString(result.getColumnIndex(CoachEntry.COLUMN_TEAM_ID)),
+                    result.getString(result.getColumnIndex(CoachEntry.COLUMN_FIRST_NAME)),
+                    result.getString(result.getColumnIndex(CoachEntry.COLUMN_LAST_NAME))
+            )
+        return null
     }
 }

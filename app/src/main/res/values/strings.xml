@@ -5,4 +5,12 @@
     <string name="west">West</string>
     <string name="team">Team</string>
     <string name="confStandings">Conference Standings</string>
+    <string name="eastConf">Eastern Conference</string>
+    <string name="westConf">Western Conference</string>
+    <string name="southeastDiv">Southeast Division</string>
+    <string name="headCoach">Head Coach: </string>
+    <string name="roster">Roster</string>
+    <string name="stats">Stats</string>
+    <string name="schedule">Schedule</string>
+    <string name="history">Match History</string>
 </resources>

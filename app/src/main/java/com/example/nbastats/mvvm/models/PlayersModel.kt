@@ -35,4 +35,7 @@ class PlayersModel {
         sqlHelper.fillPlayers(response.leagues.players)
         vmi.onResponse(response.leagues.players)
     }
+    fun getTeamRoster(teamId:String):ArrayList<Player>{
+        return sqlHelper.getRoster(teamId)
+    }
 }

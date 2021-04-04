@@ -6,4 +6,7 @@
     <string name="l_ex">20</string>
     <string name="gb_ex">15.5</string>
     <string name="team_ex">Atlanta Hawks</string>
+    <string name="head_ex">Nate McMillan</string>
+    <string name="player_ex">Kevin Huerter</string>
+    <string name="player_pos_ex">F</string>
 </resources>

@@ -13,7 +13,14 @@ class TeamsVM:ViewModel(), VMI<Team> {
 
     fun init(context:Context){
         model.attach(this, context)
+    }
+
+    fun getTeams(){
         model.getTeams()
+    }
+
+    fun getTeam(teamId:String):Team?{
+        return model.getTeam(teamId)
     }
 
     override fun onResponse(response:ArrayList<Team>) {

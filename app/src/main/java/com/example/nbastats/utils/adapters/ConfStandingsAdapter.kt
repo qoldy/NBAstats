@@ -1,4 +1,4 @@
-package com.example.nbastats.utils
+package com.example.nbastats.utils.adapters
 
 import android.app.Activity
 import android.provider.ContactsContract

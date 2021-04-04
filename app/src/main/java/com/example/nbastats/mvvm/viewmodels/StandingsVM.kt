@@ -21,4 +21,7 @@ class StandingsVM: ViewModel(), VMI<Standings> {
         standings=response
         liveData.value=model.getTeams()
     }
+    fun getTeam(id:Int):String{
+        return standings[id].teamId
+    }
 }

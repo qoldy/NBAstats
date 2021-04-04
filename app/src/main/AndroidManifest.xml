@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".mvvm.views.StandingsActivity"/>
+        <activity android:name=".mvvm.views.TeamActivity" />
     </application>
 
 </manifest>

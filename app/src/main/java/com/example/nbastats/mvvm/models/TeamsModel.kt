@@ -28,6 +28,10 @@ class TeamsModel {
         )
     }
 
+    fun getTeam(teamId:String): Team? {
+        return sqlHelper.getTeam(teamId)
+    }
+
     private fun onFailure(error:Throwable){
 
     }

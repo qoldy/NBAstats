@@ -1,5 +1,6 @@
 package com.example.nbastats.networking
 
+import com.example.nbastats.networking.responses.ResponseLeaguesC
 import com.example.nbastats.networking.responses.ResponseLeaguesP
 import com.example.nbastats.networking.responses.ResponseLeaguesS
 import com.example.nbastats.networking.responses.ResponseLeaguesT
@@ -15,4 +16,7 @@ interface ApiInterface {
 
     @GET("v1/current/standings_conference.json")
     fun getStandings():Observable<ResponseLeaguesS>
+
+    @GET("v1/2020/coaches.json")
+    fun getCoaches():Observable<ResponseLeaguesC>
 }

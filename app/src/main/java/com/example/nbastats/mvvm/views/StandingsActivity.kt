@@ -1,7 +1,9 @@
 package com.example.nbastats.mvvm.views
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ImageButton
 import android.widget.ListView
 import androidx.appcompat.widget.Toolbar
@@ -12,7 +14,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.nbastats.R
 import com.example.nbastats.mvvm.viewmodels.StandingsVM
-import com.example.nbastats.utils.ConfStandingsAdapter
+import com.example.nbastats.utils.adapters.ConfStandingsAdapter
 import com.example.nbastats.utils.VMFactory
 
 class StandingsActivity:AppCompatActivity() {
@@ -29,6 +31,7 @@ class StandingsActivity:AppCompatActivity() {
     }
     private fun init(){
         confListView=findViewById(R.id.conf_list_view)
+        confListView.setOnItemClickListener(AdapterView.OnItemClickListener { parent, view, position, id -> itemClicked(id.toInt()) })
         toolbar=findViewById(R.id.toolbar)
         toolbar.findViewById<ImageButton>(R.id.button_navigation).setOnClickListener {
             this.findViewById<DrawerLayout>(R.id.main_layout).openDrawer(GravityCompat.START)
@@ -58,5 +61,11 @@ class StandingsActivity:AppCompatActivity() {
             return
         conference="West"
         standingsVM.init(this, conference)
+    }
+
+    fun itemClicked(id:Int){
+        intent = Intent(this, TeamActivity::class.java)
+        intent.putExtra("teamId",standingsVM.getTeam(id))
+        startActivityForResult(intent,0)
     }
 }

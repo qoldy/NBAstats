@@ -13,8 +13,15 @@ class PlayersVM:ViewModel(), VMI<Player> {
 
     fun init(context:Context){
         model.attach(this, context)
+    }
+
+    fun getPlayers(){
         model.getPlayers()
     }
+    fun getRoster(teamId:String):ArrayList<Player>{
+        return model.getTeamRoster(teamId)
+    }
+
     override fun onResponse(response:ArrayList<Player>) {
         liveData.value=response
     }
