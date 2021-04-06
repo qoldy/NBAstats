@@ -21,6 +21,7 @@
         <activity android:name=".mvvm.views.StandingsActivity"/>
         <activity android:name=".mvvm.views.TeamActivity" />
         <activity android:name=".mvvm.views.ScheduleActivity" />
+        <activity android:name=".mvvm.views.PlayerActivity" />
     </application>
 
 </manifest>

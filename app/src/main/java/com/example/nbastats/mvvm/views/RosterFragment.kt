@@ -1,10 +1,12 @@
 package com.example.nbastats.mvvm.views
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ListView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -31,6 +33,7 @@ class RosterFragment: Fragment() {
     private fun init(view:View){
         teamId= this.arguments?.getString("teamId").toString()
         rosterListView=view.findViewById(R.id.list)
+        rosterListView.onItemClickListener = AdapterView.OnItemClickListener{parent, view, position, id -> itemClicked(id.toInt())}
         val factory = VMFactory()
         val provider = ViewModelProvider(this, factory)
         playersVM=provider.get(PlayersVM::class.java)
@@ -38,9 +41,15 @@ class RosterFragment: Fragment() {
         setUpRoster()
     }
     private fun setUpRoster(){
-        Log.v("id", teamId)
         roster = playersVM.getRoster(teamId)
         adapter= context?.let { RosterAdapter(it,roster) }!!
         rosterListView.adapter=adapter
+    }
+
+    private fun itemClicked(id:Int){
+        val intent = Intent(context, PlayerActivity::class.java)
+        intent.putExtra("playerId", roster[id].id)
+        intent.putExtra("teamId", teamId)
+        startActivityForResult(intent, 0)
     }
 }

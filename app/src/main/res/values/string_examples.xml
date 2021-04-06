@@ -12,4 +12,16 @@
     <string name="tricode_ex">ATL</string>
     <string name="date_ex">2021 05 2018</string>
     <string name="time_ex">7:00 PM ET</string>
+    <string name="first_name_ex">Kevin</string>
+    <string name="last_name_ex">Huerter</string>
+    <string name="jersey_ex">14</string>
+    <string name="date_of_birth_ex">18.05.2000</string>
+    <string name="height_ex">193</string>
+    <string name="weight_ex">69.9</string>
+    <string name="debut_ex">2019</string>
+    <string name="years_ex">2</string>
+    <string name="country_ex">USA</string>
+    <string name="college_ex">UCLA</string>
+    <string name="double_digit_double_ex">32.2</string>
+    <string name="four_digit_ex">3000</string>
 </resources>

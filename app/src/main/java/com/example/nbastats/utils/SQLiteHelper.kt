@@ -331,4 +331,27 @@ class SQLiteHelper(context:Context): SQLiteOpenHelper(context, DATABASE_NAME, nu
         Log.v("listSchedule",list.toString())
         return list
     }
+
+    fun getPlayerById(playerId:String):Player{
+        val db=this.readableDatabase
+        val query = "SELECT * FROM ${PlayerEntry.TABLE_NAME} WHERE ${PlayerEntry.COLUMN_ID}='${playerId}'"
+        val result = db.rawQuery(query, null)
+        result.moveToFirst()
+        return Player(
+                    result.getString(result.getColumnIndex(PlayerEntry.COLUMN_ID)),
+                    result.getString(result.getColumnIndex(PlayerEntry.COLUMN_TEAM_ID)),
+                    result.getString(result.getColumnIndex(PlayerEntry.COLUMN_FIRST_NAME)),
+                    result.getString(result.getColumnIndex(PlayerEntry.COLUMN_LAST_NAME)),
+                    result.getString(result.getColumnIndex(PlayerEntry.COLUMN_JERSEY)),
+                    true,
+                    result.getString(result.getColumnIndex(PlayerEntry.COLUMN_POSITION)),
+                    result.getString(result.getColumnIndex(PlayerEntry.COLUMN_HEIGHT)),
+                    result.getString(result.getColumnIndex(PlayerEntry.COLUMN_WEIGHT)),
+                    result.getString(result.getColumnIndex(PlayerEntry.COLUMN_DATE_OF_BIRTH)),
+                    result.getString(result.getColumnIndex(PlayerEntry.COLUMN_NBA_DEBUT)),
+                    result.getString(result.getColumnIndex(PlayerEntry.COLUMN_YEARS_PRO)),
+                    result.getString(result.getColumnIndex(PlayerEntry.COLUMN_COLLEGE)),
+                    result.getString(result.getColumnIndex(PlayerEntry.COLUMN_COUNTRY))
+        )
+    }
 }

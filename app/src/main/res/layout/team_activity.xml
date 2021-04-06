@@ -80,24 +80,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:minWidth="130dp"
-                android:text="@string/roster"
+                android:text="@string/basic_info"
                 android:onClick="onRosterClick"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:minWidth="130dp"
-                android:text="@string/stats"
+                android:text="@string/season_stats"
                 android:onClick="onStatsClick"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:minWidth="130dp"
-                android:text="@string/schedule"/>
+                android:text="@string/career_stats"/>
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:minWidth="130dp"
-                android:text="@string/history"/>
+                android:text="@string/teams"/>
         </LinearLayout>
         </HorizontalScrollView>
         <LinearLayout

@@ -25,4 +25,7 @@ class PlayersVM:ViewModel(), VMI<Player> {
     override fun onResponse(response:ArrayList<Player>) {
         liveData.value=response
     }
+    fun getPlayerById(playerId:String):Player{
+        return model.getPlayerById(playerId)
+    }
 }

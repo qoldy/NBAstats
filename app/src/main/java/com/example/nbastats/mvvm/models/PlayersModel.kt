@@ -38,4 +38,8 @@ class PlayersModel {
     fun getTeamRoster(teamId:String):ArrayList<Player>{
         return sqlHelper.getRoster(teamId)
     }
+
+    fun getPlayerById(playerId:String):Player{
+        return sqlHelper.getPlayerById(playerId)
+    }
 }

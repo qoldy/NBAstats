@@ -31,7 +31,7 @@ class StandingsActivity:AppCompatActivity() {
     }
     private fun init(){
         confListView=findViewById(R.id.conf_list_view)
-        confListView.setOnItemClickListener(AdapterView.OnItemClickListener { parent, view, position, id -> itemClicked(id.toInt()) })
+        confListView.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id -> itemClicked(id.toInt()) }
         toolbar=findViewById(R.id.toolbar)
         toolbar.findViewById<ImageButton>(R.id.button_navigation).setOnClickListener {
             this.findViewById<DrawerLayout>(R.id.main_layout).openDrawer(GravityCompat.START)

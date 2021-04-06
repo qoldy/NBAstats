@@ -13,6 +13,12 @@
     <string name="stats">Stats</string>
     <string name="schedule">Schedule</string>
     <string name="history">Match History</string>
+    <string name="basic_info">Basic Info</string>
+    <string name="season_stats">Season Stats</string>
+    <string name="career_stats">Career Stats</string>
+    <string name="teams">Teams</string>
+    <string name="av_stats">Average Stats</string>
+    <string name="total_stats">Total Stats</string>
 
     <string name="fieldGoals">Field Goal Percentage</string>
     <string name="threePointers">Three Pointers Percentage</string>
@@ -27,4 +33,38 @@
     <string name="fouls">Personal Fouls per Game</string>
     <string name="points">Points per Game</string>
     <string name="oPoints">Opponent Points per Game</string>
+    <string name="minutes">Minutes per Game</string>
+
+    <string name="first_name">First Name: </string>
+    <string name="last_name">Last Name: </string>
+    <string name="team_">Team: </string>
+    <string name="jersey">Jersey: </string>
+    <string name="position">Position: </string>
+    <string name="date_of_birth">Date of Birth: </string>
+    <string name="height">Height: </string>
+    <string name="weight">Weight: </string>
+    <string name="debut">NBA Debut: </string>
+    <string name="years_pro">Years Pro: </string>
+    <string name="country">Country: </string>
+    <string name="college">College: </string>
+
+    <string name="totalAssists">Assists</string>
+    <string name="totalBlocks">Blocks</string>
+    <string name="totalSteals">Steals</string>
+    <string name="totalTO">Turnovers</string>
+    <string name="totalOffReb">Offensive Rebounds</string>
+    <string name="totalDefReb">Defensive Rebounds</string>
+    <string name="totalRebs">Rebounds</string>
+    <string name="fgm">Field Goals Made</string>
+    <string name="fga">Field Goals Attempted</string>
+    <string name="tpm">Three Pointers Made</string>
+    <string name="tpa">Three Pointers Attempted</string>
+    <string name="ftm">Free Throws Made</string>
+    <string name="fta">Free Throws Attempted</string>
+    <string name="pFouls">Personal Fouls</string>
+    <string name="totalPoints">Points</string>
+    <string name="gamesPlayed">Games Played</string>
+    <string name="gamesStarted">Games Started</string>
+    <string name="plusMinus">Plus Minus</string>
+
 </resources>
