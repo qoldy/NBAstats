@@ -9,4 +9,7 @@
     <string name="head_ex">Nate McMillan</string>
     <string name="player_ex">Kevin Huerter</string>
     <string name="player_pos_ex">F</string>
+    <string name="tricode_ex">ATL</string>
+    <string name="date_ex">2021 05 2018</string>
+    <string name="time_ex">7:00 PM ET</string>
 </resources>

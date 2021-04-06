@@ -1,6 +1,7 @@
 package com.example.nbastats.mvvm.views
 
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -18,6 +19,7 @@ import com.example.nbastats.utils.VMFactory
 class TeamActivity:AppCompatActivity() {
     private lateinit var fragmentContainer:LinearLayout
     private var fragmentRoster=RosterFragment()
+    private var fragmentStats = TeamStatsFragment()
     private lateinit var teamText:TextView
     private lateinit var conferenceText:TextView
     private lateinit var divisionText:TextView
@@ -33,7 +35,7 @@ class TeamActivity:AppCompatActivity() {
     }
     private fun init(){
         fragmentContainer=findViewById(R.id.fragment_container)
-        teamId=intent.getStringExtra("teamId")
+        intent.getStringExtra("teamId").also { teamId = it }
         teamText=findViewById(R.id.team_name)
         conferenceText=findViewById(R.id.conference)
         divisionText=findViewById(R.id.division)
@@ -48,7 +50,6 @@ class TeamActivity:AppCompatActivity() {
         fragmentRoster.arguments=bundle
         supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, fragmentRoster)
-                .addToBackStack("roster")
                 .commit()
 
         val factory = VMFactory()
@@ -61,11 +62,30 @@ class TeamActivity:AppCompatActivity() {
     }
 
     private fun initText(team: Team){
-        teamText.text= "${team.city} ${team.name}"
-        conferenceText.text="${team.conference}  Conference"
-        divisionText.text="${team.division} Division"
-        var coach = coachesVM.getCoach(team.id)
-        headText.text="${coach?.firstName} ${coach?.lastName}"
+        "${team.city} ${team.name}".also { teamText.text = it }
+        "${team.conference}ern  Conference".also { conferenceText.text = it }
+        "${team.division} Division".also { divisionText.text = it }
+        val coach = coachesVM.getCoach(team.id)
+        "${coach?.firstName} ${coach?.lastName}".also { headText.text = it }
     }
+
+    fun onRosterClick(view:View){
+        val bundle=Bundle()
+        bundle.putString("teamId", teamId)
+        fragmentRoster.arguments=bundle
+        supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, fragmentRoster)
+                .commit()
+    }
+
+    fun onStatsClick(view:View){
+        val bundle=Bundle()
+        bundle.putString("teamId", teamId)
+        fragmentRoster.arguments=bundle
+        supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, fragmentStats)
+                .commit()
+    }
+
 
 }

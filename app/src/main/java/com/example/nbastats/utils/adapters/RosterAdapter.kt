@@ -20,7 +20,7 @@ class RosterAdapter(context: Context, var players:ArrayList<Player>)
         val posText=rowView.findViewById<TextView>(R.id.player_pos)
 
         jerseyText.text = players[position].jersey
-        nameText.text = "${players[position].firstName} ${players[position].lastName}"
+        "${players[position].firstName} ${players[position].lastName}".also { nameText.text = it }
         posText.text=players[position].position
         return rowView
     }

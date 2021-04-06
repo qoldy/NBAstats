@@ -24,7 +24,7 @@ class TeamsModel {
             RetrofitService.getInstance().getTeams()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe({response->onResponse(response)}, {error->onFailure(error)})
+                .subscribe({response->onResponse(response)}, {error->onError(error)})
         )
     }
 
@@ -32,8 +32,8 @@ class TeamsModel {
         return sqlHelper.getTeam(teamId)
     }
 
-    private fun onFailure(error:Throwable){
-
+    private fun onError(error:Throwable){
+        Log.e("teamsError",error.message.toString())
     }
 
     private fun onResponse(response: ResponseLeaguesT){

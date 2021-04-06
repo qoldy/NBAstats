@@ -1,6 +1,7 @@
 package com.example.nbastats.mvvm.models
 
 import android.content.Context
+import android.util.Log
 import com.example.nbastats.data.Coach
 import com.example.nbastats.networking.RetrofitService
 import com.example.nbastats.networking.responses.ResponseLeaguesC
@@ -25,7 +26,7 @@ class CoachesModel {
                 RetrofitService.getInstance().getCoaches()
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.io())
-                        .subscribe({response->onResponse(response)}, {error->onFailure(error)})
+                        .subscribe({response->onResponse(response)}, {error->onError(error)})
         )
     }
 
@@ -33,8 +34,8 @@ class CoachesModel {
         return sqlHelper.getCoach(teamId)
     }
 
-    private fun onFailure(error:Throwable){
-
+    private fun onError(error:Throwable){
+        Log.e("coachesError",error.message.toString())
     }
 
     private fun onResponse(response: ResponseLeaguesC){

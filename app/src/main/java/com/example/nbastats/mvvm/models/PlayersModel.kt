@@ -24,10 +24,10 @@ class PlayersModel {
                 RetrofitService.getInstance().getPlayers()
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.io())
-                        .subscribe({response->onResponse(response)}, {error->onFailure(error)})
+                        .subscribe({response->onResponse(response)}, {error->onError(error)})
         )
     }
-    private fun onFailure(error:Throwable){
+    private fun onError(error:Throwable){
         Log.e("playersError",error.message.toString())
     }
 

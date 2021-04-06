@@ -11,4 +11,12 @@
         app:layout_constraintStart_toStartOf="parent"
         android:text="@string/confStandings"/>
 
+    <Button
+        android:id="@+id/button_schedule"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/button_conf_standings"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/schedule"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

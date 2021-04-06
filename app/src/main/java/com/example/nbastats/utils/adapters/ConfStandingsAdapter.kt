@@ -31,7 +31,7 @@ class ConfStandingsAdapter(private val context: Activity, private val standings:
         val gamesBehindText = rowView.findViewById(R.id.games_behind) as TextView
 
         positionText.text=position.toString()
-        teamText.text= """${team.city} ${team.name}"""
+        "${team.city} ${team.name}".also { teamText.text = it }
         winsText.text=standings[position].wins.toString()
         lossText.text=standings[position].loss.toString()
         gamesBehindText.text=standings[position].gamesBehind.toString()

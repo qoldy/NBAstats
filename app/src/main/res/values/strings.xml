@@ -13,4 +13,18 @@
     <string name="stats">Stats</string>
     <string name="schedule">Schedule</string>
     <string name="history">Match History</string>
+
+    <string name="fieldGoals">Field Goal Percentage</string>
+    <string name="threePointers">Three Pointers Percentage</string>
+    <string name="freeThrows">Free Throws Percentage</string>
+    <string name="offReb">Offensive Rebounds per Game</string>
+    <string name="defReb">Defensive Rebounds per Game</string>
+    <string name="totalReb">Rebounds per Game</string>
+    <string name="turnovers">Turnovers per Game</string>
+    <string name="steals">Steals per Game</string>
+    <string name="assists">Assists per Game</string>
+    <string name="blocks">Blocks per Game</string>
+    <string name="fouls">Personal Fouls per Game</string>
+    <string name="points">Points per Game</string>
+    <string name="oPoints">Opponent Points per Game</string>
 </resources>

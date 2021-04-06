@@ -5,10 +5,9 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.provider.BaseColumns
-import com.example.nbastats.data.Coach
-import com.example.nbastats.data.Player
-import com.example.nbastats.data.Standings
-import com.example.nbastats.data.Team
+import android.util.Log
+import com.example.nbastats.data.*
+import java.time.LocalDate
 
 class SQLiteHelper(context:Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     companion object{
@@ -93,16 +92,37 @@ class SQLiteHelper(context:Context): SQLiteOpenHelper(context, DATABASE_NAME, nu
 
     private val CLEAR_TABLE_COACHES="DELETE FROM ${CoachEntry.TABLE_NAME}"
 
+    object ScheduleEntry:BaseColumns{
+        const val TABLE_NAME="schedule"
+        const val COLUMN_ID="id"
+        const val COLUMN_DATE="date"
+        const val COLUMN_TIME="time"
+        const val COLUMN_HOME="home_id"
+        const val COLUMN_GUEST="guest_id"
+    }
+
+    private val CREATE_TABLE_SCHEDULE=
+            "CREATE TABLE ${ScheduleEntry.TABLE_NAME} (" +
+                    "${ScheduleEntry.COLUMN_ID} TEXT," +
+                    "${ScheduleEntry.COLUMN_DATE} TEXT," +
+                    "${ScheduleEntry.COLUMN_TIME} TEXT," +
+                    "${ScheduleEntry.COLUMN_HOME} TEXT," +
+                    "${ScheduleEntry.COLUMN_GUEST} TEXT)"
+    private val DROP_TABLE_SCHEDULE="DROP TABLE IF EXISTS ${ScheduleEntry.TABLE_NAME}"
+    private val CLEAR_TABLE_SCHEDULE="DELETE FROM ${ScheduleEntry.TABLE_NAME}"
+
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(CREATE_TABLE_TEAMS)
         db.execSQL(CREATE_TABLE_PLAYERS)
         db.execSQL(CREATE_TABLE_COACHES)
+        db.execSQL(CREATE_TABLE_SCHEDULE)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL(DROP_TABLE_TEAMS)
         db.execSQL(DROP_TABLE_PLAYERS)
         db.execSQL(DROP_TABLE_COACHES)
+        db.execSQL(DROP_TABLE_SCHEDULE)
         onCreate(db)
     }
 
@@ -161,6 +181,44 @@ class SQLiteHelper(context:Context): SQLiteOpenHelper(context, DATABASE_NAME, nu
             }
             db?.insert(CoachEntry.TABLE_NAME, null, values)
         }
+    }
+
+    fun fillSchedule(schedule:ArrayList<Schedule>){
+        val db=this.writableDatabase
+        db.execSQL(CLEAR_TABLE_SCHEDULE)
+        for(game in schedule){
+            if(game.date=="")
+                continue
+            val values = ContentValues().apply {
+                put(ScheduleEntry.COLUMN_ID, game.id)
+                put(ScheduleEntry.COLUMN_DATE, game.date)
+                put(ScheduleEntry.COLUMN_TIME, game.time)
+                put(ScheduleEntry.COLUMN_HOME, game.home.id)
+                put(ScheduleEntry.COLUMN_GUEST, game.guest.id)
+            }
+            db?.insert(ScheduleEntry.TABLE_NAME, null, values)
+        }
+    }
+
+    fun getAllTeams():ArrayList<Team>{
+        val db=this.readableDatabase
+        val list=ArrayList<Team>()
+        val query = "SELECT * FROM ${TeamEntry.TABLE_NAME}"
+        val result = db.rawQuery(query, null)
+        if(result.moveToFirst()){
+            do{
+                val team = Team(
+                        result.getString(result.getColumnIndex(TeamEntry.COLUMN_ID)),
+                        result.getString(result.getColumnIndex(TeamEntry.COLUMN_CITY)),
+                        result.getString(result.getColumnIndex(TeamEntry.COLUMN_NAME)),
+                        result.getString(result.getColumnIndex(TeamEntry.COLUMN_TRICODE)),
+                        result.getString(result.getColumnIndex(TeamEntry.COLUMN_CONFERENCE)),
+                        result.getString(result.getColumnIndex(TeamEntry.COLUMN_DIVISION))
+                )
+                list.add(team)
+            }while (result.moveToNext())
+        }
+        return list
     }
 
     fun getTeamsByConference(conference: String):ArrayList<Team>{
@@ -241,5 +299,36 @@ class SQLiteHelper(context:Context): SQLiteOpenHelper(context, DATABASE_NAME, nu
                     result.getString(result.getColumnIndex(CoachEntry.COLUMN_LAST_NAME))
             )
         return null
+    }
+
+    fun getSchedule7Days(date:String):ArrayList<Schedule>{
+        val list=ArrayList<Schedule>()
+        val db=this.readableDatabase
+        var localDate=LocalDate.of(date.substring(0,4).toInt(), date.substring(4,6).toInt(), date.substring(6,8).toInt())
+        localDate=localDate.plusDays(7)
+        var endDate=if(localDate.monthValue<10)
+            "${localDate.year}0${localDate.monthValue}"
+        else
+            "${localDate.year}${localDate.monthValue}"
+        endDate += if(localDate.dayOfMonth<10)
+            "0${localDate.dayOfMonth}"
+        else "${localDate.dayOfMonth}"
+        val query= "SELECT * FROM ${ScheduleEntry.TABLE_NAME} WHERE ${ScheduleEntry.COLUMN_DATE}>='${date}' AND ${ScheduleEntry.COLUMN_DATE}<=${endDate}"
+        val result=db.rawQuery(query, null)
+        if(result.moveToFirst()){
+            do {
+                list.add(
+                        Schedule(
+                                result.getString(result.getColumnIndex(ScheduleEntry.COLUMN_ID)),
+                                result.getString(result.getColumnIndex(ScheduleEntry.COLUMN_DATE)),
+                                result.getString(result.getColumnIndex(ScheduleEntry.COLUMN_TIME)),
+                                ScheduleTeam(result.getString(result.getColumnIndex(ScheduleEntry.COLUMN_HOME))),
+                                ScheduleTeam(result.getString(result.getColumnIndex(ScheduleEntry.COLUMN_GUEST)))
+                        )
+                )
+            }while (result.moveToNext())
+        }
+        Log.v("listSchedule",list.toString())
+        return list
     }
 }
