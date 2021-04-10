@@ -10,7 +10,7 @@
     <string name="player_ex">Kevin Huerter</string>
     <string name="player_pos_ex">F</string>
     <string name="tricode_ex">ATL</string>
-    <string name="date_ex">2021 05 2018</string>
+    <string name="date_ex">2021 05 18</string>
     <string name="time_ex">7:00 PM ET</string>
     <string name="first_name_ex">Kevin</string>
     <string name="last_name_ex">Huerter</string>
@@ -24,4 +24,5 @@
     <string name="college_ex">UCLA</string>
     <string name="double_digit_double_ex">32.2</string>
     <string name="four_digit_ex">3000</string>
+    <string name="three_digit_ex">123</string>
 </resources>

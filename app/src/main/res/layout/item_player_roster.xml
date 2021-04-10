@@ -1,23 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="40dp"
+    android:gravity="center">
     <TextView
         android:id="@+id/jersey"
         android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:text="@string/pos_ex" />
+        android:layout_height="match_parent"
+        android:text="@string/pos_ex"
+        style="@style/standardText"/>
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/dark_blue"
+        android:layout_toStartOf="@id/player"/>
     <TextView
         android:id="@+id/player"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:text="@string/player_ex"
+        android:textAlignment="viewStart"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         android:layout_toEndOf="@id/jersey"
+        android:layout_toStartOf="@id/player_pos"
+        style="@style/standardText"/>
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/dark_blue"
         android:layout_toStartOf="@id/player_pos"/>
     <TextView
         android:id="@+id/player_pos"
         android:layout_width="40dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:text="@string/player_pos_ex"
-        android:layout_alignParentEnd="true"/>
+        android:layout_alignParentEnd="true"
+        style="@style/standardText"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/dark_blue"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/dark_blue"/>
 </RelativeLayout>

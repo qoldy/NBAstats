@@ -15,9 +15,14 @@ data class ResponseSeason(
         var seasons:ArrayList<ResponsePlayerStats>
 )
 
-data class ResponseStats(
+data class ResponseStatsType(
         @SerializedName("regularSeason")
         var regular:ResponseSeason
+)
+
+data class ResponseStats(
+        @SerializedName("stats")
+        var stats:ResponseStatsType
 )
 
 data class ResponseStandardPS(

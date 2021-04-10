@@ -13,14 +13,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/first_name"
+                android:layout_margin="10dp"
+                style="@style/standardText"
                 />
             <TextView
                 android:id="@+id/first_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/first_name_ex"
+                android:layout_margin="10dp"
+                style="@style/standardText"
                 />
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/dark_blue"/>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_height="wrap_content"
@@ -29,14 +37,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/last_name"
+                android:layout_margin="10dp"
+                style="@style/standardText"
                 />
             <TextView
                 android:id="@+id/last_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                style="@style/standardText"
                 android:text="@string/last_name_ex"
                 />
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/dark_blue"/>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_height="wrap_content"
@@ -45,14 +61,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/team_"
+                android:layout_margin="10dp"
+                style="@style/standardText"
                 />
             <TextView
                 android:id="@+id/team"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/team_ex"
+                android:layout_margin="10dp"
+                style="@style/standardText"
                 />
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/dark_blue"/>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_height="wrap_content"
@@ -61,14 +85,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/jersey"
+                android:layout_margin="10dp"
+                style="@style/standardText"
                 />
             <TextView
                 android:id="@+id/jersey"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/jersey_ex"
+                android:layout_margin="10dp"
+                style="@style/standardText"
                 />
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/dark_blue"/>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_height="wrap_content"
@@ -77,14 +109,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/position"
+                android:layout_margin="10dp"
+                style="@style/standardText"
                 />
             <TextView
                 android:id="@+id/position"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/player_pos_ex"
+                android:layout_margin="10dp"
+                style="@style/standardText"
                 />
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/dark_blue"/>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_height="wrap_content"
@@ -93,14 +133,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/date_of_birth"
+                android:layout_margin="10dp"
+                style="@style/standardText"
                 />
             <TextView
                 android:id="@+id/date_of_birth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/date_of_birth_ex"
+                android:layout_margin="10dp"
+                style="@style/standardText"
                 />
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/dark_blue"/>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_height="wrap_content"
@@ -109,14 +157,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/height"
+                android:layout_margin="10dp"
+                style="@style/standardText"
                 />
             <TextView
                 android:id="@+id/height"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/height_ex"
+                android:layout_margin="10dp"
+                style="@style/standardText"
                 />
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/dark_blue"/>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_height="wrap_content"
@@ -125,14 +181,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/weight"
+                android:layout_margin="10dp"
+                style="@style/standardText"
                 />
             <TextView
                 android:id="@+id/weight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/weight_ex"
+                android:layout_margin="10dp"
+                style="@style/standardText"
                 />
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/dark_blue"/>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_height="wrap_content"
@@ -141,14 +205,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/debut"
+                android:layout_margin="10dp"
+                style="@style/standardText"
                 />
             <TextView
                 android:id="@+id/debut"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/debut_ex"
+                android:layout_margin="10dp"
+                style="@style/standardText"
                 />
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/dark_blue"/>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_height="wrap_content"
@@ -157,14 +229,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/years_pro"
+                android:layout_margin="10dp"
+                style="@style/standardText"
                 />
             <TextView
                 android:id="@+id/years_pro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/years_ex"
+                android:layout_margin="10dp"
+                style="@style/standardText"
                 />
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/dark_blue"/>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_height="wrap_content"
@@ -173,14 +253,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/country"
+                android:layout_margin="10dp"
+                style="@style/standardText"
                 />
             <TextView
                 android:id="@+id/country"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/country_ex"
+                android:layout_margin="10dp"
+                style="@style/standardText"
                 />
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/dark_blue"/>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_height="wrap_content"
@@ -189,12 +277,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/college"
+                android:layout_margin="10dp"
+                style="@style/standardText"
                 />
             <TextView
                 android:id="@+id/college"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/college_ex"
+                android:layout_margin="10dp"
+                style="@style/standardText"
                 />
         </LinearLayout>
     </LinearLayout>

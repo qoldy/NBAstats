@@ -1,22 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="200dp"
     android:layout_height="match_parent"
+    android:background="@color/dark_grey"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView
+        android:id="@+id/app_logo"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="25dp"
+        android:src="@drawable/nba_logo"/>
     <Button
         android:id="@+id/button_conf_standings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="@string/confStandings"/>
+        android:layout_below="@id/app_logo"
+        android:layout_marginTop="30dp"
+        android:text="@string/confStandings"
+        style="@style/standardButton"/>
 
     <Button
         android:id="@+id/button_schedule"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/button_conf_standings"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="@string/schedule"/>
+        android:layout_below="@id/button_conf_standings"
+        android:layout_marginTop="10dp"
+        android:text="@string/schedule"
+        style="@style/standardButton"/>
+    <Button
+        android:id="@+id/button_match_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/button_schedule"
+        android:layout_marginTop="10dp"
+        android:text="@string/match_history"
+        style="@style/standardButton"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

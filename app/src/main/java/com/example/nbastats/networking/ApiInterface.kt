@@ -1,5 +1,6 @@
 package com.example.nbastats.networking
 
+import com.example.nbastats.data.PlayerStats
 import com.example.nbastats.networking.responses.*
 import io.reactivex.Observable
 import retrofit2.http.GET
@@ -26,5 +27,8 @@ interface ApiInterface {
     fun getSchedule():Observable<ResponseLeaguesSc>
 
     @GET("v1/2020/players/{player_id}_profile.json")
-    fun getPlayerStats(@Path("player_id") playerId:String)
+    fun getPlayerStats(@Path("player_id") playerId:String):Observable<ResponseLeaguesPS>
+
+    @GET("v2/{game_date}/scoreboard.json")
+    fun getGamesByDate(@Path("game_date")gameDate:String):Observable<ResponseGames>
 }

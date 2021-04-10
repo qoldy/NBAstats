@@ -19,6 +19,7 @@
     <string name="teams">Teams</string>
     <string name="av_stats">Average Stats</string>
     <string name="total_stats">Total Stats</string>
+    <string name="match_history">Match History</string>
 
     <string name="fieldGoals">Field Goal Percentage</string>
     <string name="threePointers">Three Pointers Percentage</string>

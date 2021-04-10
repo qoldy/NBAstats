@@ -5,7 +5,8 @@
     android:id="@+id/main_layout"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
     <RelativeLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -14,17 +15,18 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="?attr/colorPrimaryDark"
-            android:theme="@style/ThemeOverlay.AppCompat.DayNight.ActionBar">
+            android:background="@color/red">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <ImageButton
                     android:id="@+id/button_navigation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@mipmap/ic_launcher"
-                    android:contentDescription="@string/navigation" />
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/hamburger"
+                    android:contentDescription="@string/navigation"
+                    />
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
         <LinearLayout
@@ -38,13 +40,22 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="@string/east"
-                android:onClick="onEastClicked"/>
+                android:onClick="onEastClicked"
+                android:layout_marginStart="5dp"
+                style="@style/standardButton"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_weight="0.02"
+                android:layout_height="match_parent"
+                android:background="@color/white"/>
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="@string/west"
-                android:onClick="onWestClicked"/>
+                android:onClick="onWestClicked"
+                android:layout_marginEnd="5dp"
+                style="@style/standardButton"/>
         </LinearLayout>
         <fragment
             android:id="@+id/header"

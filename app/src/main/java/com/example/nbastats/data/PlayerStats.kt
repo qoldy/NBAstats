@@ -1,8 +1,11 @@
 package com.example.nbastats.data
 
+import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 data class PlayerStats(
+        @Expose(deserialize = false)
+        var season: String ="2020",
         @SerializedName("ppg")
         var ppg:String,
         @SerializedName("rpg")

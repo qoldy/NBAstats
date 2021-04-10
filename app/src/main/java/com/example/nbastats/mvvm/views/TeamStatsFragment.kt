@@ -44,7 +44,7 @@ class TeamStatsFragment:Fragment() {
         fgpText=view.findViewById(R.id.fgp)
         tppText=view.findViewById(R.id.tpp)
         ftpText=view.findViewById(R.id.ftp)
-        orpgText=view.findViewById(R.id.orgp)
+        orpgText=view.findViewById(R.id.orpg)
         drpgText=view.findViewById(R.id.drpg)
         trpgText=view.findViewById(R.id.trpg)
         tpgText=view.findViewById(R.id.tpg)
@@ -68,18 +68,18 @@ class TeamStatsFragment:Fragment() {
         })
     }
     private fun setText(stats:TeamStats){
-        (stats.fgp.avg+"\nNBA Rank:"+stats.fgp.rank).also { fgpText.text = it }
-        (stats.tpp.avg+"\nNBA Rank:"+stats.tpp.rank).also { tppText.text = it }
-        (stats.ftp.avg+"\nNBA Rank:"+stats.ftp.rank).also { ftpText.text = it }
-        (stats.orpg.avg+"\nNBA Rank:"+stats.orpg.rank).also { orpgText.text = it }
-        (stats.drpg.avg+"\nNBA Rank:"+stats.drpg.rank).also { drpgText.text = it }
-        (stats.trpg.avg+"\nNBA Rank:"+stats.trpg.rank).also { trpgText.text = it }
-        (stats.tpg.avg+"\nNBA Rank:"+stats.tpg.rank).also { tpgText.text = it }
-        (stats.spg.avg+"\nNBA Rank:"+stats.spg.rank).also { spgText.text = it }
-        (stats.apg.avg+"\nNBA Rank:"+stats.apg.rank).also { apgText.text = it }
-        (stats.bpg.avg+"\nNBA Rank:"+stats.bpg.rank).also { bpgText.text = it }
-        (stats.pfpg.avg+"\nNBA Rank:"+stats.pfpg.rank).also { pfpgText.text = it }
-        (stats.ppg.avg+"\nNBA Rank:"+stats.ppg.rank).also { ppgText.text = it }
-        (stats.oppg.avg+"\nNBA Rank:"+stats.oppg.rank).also { oppgText.text = it }
+        (stats.fgp.avg+"% / NBA Rank:"+stats.fgp.rank).also { fgpText.text = it }
+        (stats.tpp.avg+"% / NBA Rank:"+stats.tpp.rank).also { tppText.text = it }
+        (stats.ftp.avg+"% / NBA Rank:"+stats.ftp.rank).also { ftpText.text = it }
+        (stats.orpg.avg+" / NBA Rank:"+stats.orpg.rank).also { orpgText.text = it }
+        (stats.drpg.avg+" / NBA Rank:"+stats.drpg.rank).also { drpgText.text = it }
+        (stats.trpg.avg+" / NBA Rank:"+stats.trpg.rank).also { trpgText.text = it }
+        (stats.tpg.avg+" / NBA Rank:"+stats.tpg.rank).also { tpgText.text = it }
+        (stats.spg.avg+" / NBA Rank:"+stats.spg.rank).also { spgText.text = it }
+        (stats.apg.avg+" / NBA Rank:"+stats.apg.rank).also { apgText.text = it }
+        (stats.bpg.avg+" / NBA Rank:"+stats.bpg.rank).also { bpgText.text = it }
+        (stats.pfpg.avg+" / NBA Rank:"+stats.pfpg.rank).also { pfpgText.text = it }
+        (stats.ppg.avg+" / NBA Rank:"+stats.ppg.rank).also { ppgText.text = it }
+        (stats.oppg.avg+" / NBA Rank:"+stats.oppg.rank).also { oppgText.text = it }
     }
 }

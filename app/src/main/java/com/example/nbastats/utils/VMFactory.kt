@@ -19,6 +19,10 @@ class VMFactory:ViewModelProvider.Factory {
             return TeamStatsVM() as T
         else if(modelClass.isAssignableFrom(ScheduleVM::class.java))
             return ScheduleVM() as T
+        else if(modelClass.isAssignableFrom(PlayerStatsVM::class.java))
+            return PlayerStatsVM() as T
+        else if(modelClass.isAssignableFrom(GameVM::class.java))
+            return GameVM() as T
         throw IllegalArgumentException ("UnknownViewModel")
     }
 }

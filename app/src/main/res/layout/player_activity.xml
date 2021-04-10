@@ -4,7 +4,8 @@
     android:id="@+id/main_layout"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -12,17 +13,18 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="?attr/colorPrimaryDark"
-            android:theme="@style/ThemeOverlay.AppCompat.DayNight.ActionBar">
+            android:background="@color/red">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <ImageButton
                     android:id="@+id/button_navigation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@mipmap/ic_launcher"
-                    android:contentDescription="@string/navigation" />
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/hamburger"
+                    android:contentDescription="@string/navigation"
+                    />
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
         <TextView
@@ -30,13 +32,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/player_ex"
-            android:layout_below="@id/toolbar"/>
+            android:layout_below="@id/toolbar"
+            style="@style/headerText"/>
+
         <ImageView
             android:id="@+id/headshot"
-            android:layout_width="wrap_content"
+            android:layout_width="205dp"
             android:layout_height="150dp"
-            android:src="@mipmap/ic_launcher"
-            android:layout_below="@id/player"/>
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/player"
+            android:src="@mipmap/ic_launcher" />
+
         <HorizontalScrollView
             android:id="@+id/buttons"
             android:layout_width="match_parent"
@@ -50,24 +57,40 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="130dp"
-                    android:text="@string/roster"
-                    android:onClick="onRosterClick"/>
+                    android:text="@string/basic_info"
+                    android:onClick="onBasicClicked"
+                    style="@style/standardButton"/>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"/>
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="130dp"
-                    android:text="@string/stats"
-                    android:onClick="onStatsClick"/>
+                    android:text="@string/season_stats"
+                    android:onClick="onSeasonClicked"
+                    style="@style/standardButton"/>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"/>
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="130dp"
-                    android:text="@string/schedule"/>
+                    android:text="@string/career_stats"
+                    style="@style/standardButton"/>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"/>
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="130dp"
-                    android:text="@string/history"/>
+                    android:text="@string/teams"
+                    style="@style/standardButton"/>
             </LinearLayout>
         </HorizontalScrollView>
         <LinearLayout

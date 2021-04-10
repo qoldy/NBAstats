@@ -15,7 +15,6 @@ class TeamStatsVM:ViewModel(), VMI<TeamStats> {
         model.getTeamStats()
     }
     fun getTeamStats(teamId:String):TeamStats{
-        Log.v("teamStats", liveData.value.toString())
         for(stats in liveData.value!!){
             if(stats.teamId==teamId)
                 return stats

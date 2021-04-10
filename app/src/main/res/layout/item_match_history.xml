@@ -30,28 +30,12 @@
         android:layout_toStartOf="@id/logo_guest"
         style="@style/triCodeText"/>
     <TextView
-        android:id="@+id/game_date"
+        android:id="@+id/score"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:text="@string/date_ex"
-        android:layout_toEndOf="@id/logo_home"
-        android:layout_toStartOf="@id/logo_guest"
-        style="@style/standardText"
-        />
-    <TextView
-        android:id="@+id/game_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/time_ex"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_toEndOf="@id/logo_home"
-        android:layout_toStartOf="@id/logo_guest"
+        android:layout_height="80dp"
+        android:text="@string/three_digit_ex"
+        android:layout_toEndOf="@id/tricode_home"
+        android:layout_toStartOf="@id/tricode_guest"
         style="@style/standardText"
         />
     <View

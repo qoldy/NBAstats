@@ -1,8 +1,10 @@
 package com.example.nbastats.mvvm.views
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +17,7 @@ import com.example.nbastats.data.Team
 import com.example.nbastats.mvvm.viewmodels.CoachesVM
 import com.example.nbastats.mvvm.viewmodels.TeamsVM
 import com.example.nbastats.utils.VMFactory
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
 
 class TeamActivity:AppCompatActivity() {
     private lateinit var fragmentContainer:LinearLayout
@@ -28,6 +31,7 @@ class TeamActivity:AppCompatActivity() {
     private lateinit var teamsVM:TeamsVM
     private lateinit var coachesVM:CoachesVM
     private lateinit var toolbar: Toolbar
+    private lateinit var logo: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.team_activity)
@@ -44,6 +48,7 @@ class TeamActivity:AppCompatActivity() {
         toolbar.findViewById<ImageButton>(R.id.button_navigation).setOnClickListener {
             this.findViewById<DrawerLayout>(R.id.main_layout).openDrawer(GravityCompat.START)
         }
+        logo=findViewById(R.id.logo)
 
         val bundle=Bundle()
         bundle.putString("teamId", teamId)
@@ -54,6 +59,7 @@ class TeamActivity:AppCompatActivity() {
 
         val factory = VMFactory()
         val provider = ViewModelProvider(this, factory)
+        logo.loadSvg("https://cdn.nba.com/logos/nba/${teamId}/global/L/logo.svg")
         teamsVM=provider.get(TeamsVM::class.java)
         coachesVM=provider.get(CoachesVM::class.java)
         teamsVM.init(this)
@@ -81,11 +87,15 @@ class TeamActivity:AppCompatActivity() {
     fun onStatsClick(view:View){
         val bundle=Bundle()
         bundle.putString("teamId", teamId)
-        fragmentRoster.arguments=bundle
+        fragmentStats.arguments=bundle
         supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, fragmentStats)
                 .commit()
     }
-
+    fun ImageView.loadSvg(url:String?){
+        GlideToVectorYou.init()
+                .with(this.context)
+                .load(Uri.parse(url),this)
+    }
 
 }
